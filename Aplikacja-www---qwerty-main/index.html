@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja strona</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+</head>
+<body align="center">
+    <header>
+        <h1>Witam</h1>
+        <nav></nav>
+    </header>
+    <form method="post">
+
+    <label for="kraj">Kraj:</label>
+    <input type="text" name="kraj" id="kraj">
+
+    <input type="submit">
+    </form>
+    <button onclick="sortTable(1)">nacisnij</button>
+    <main>
+    <table id="myTable" Maxwidth="1400 px" align="center">
+    <thead>
+        <tr>
+            <th>Kraj</th>
+            <th>Medale</th>
+            <th>Liczba igrzysk</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>Stany Zjednoczone <span class="flag">🇺🇸</span></td>
+        <td>3095</td>
+        <td>53</td>
+      </tr>
+      <tr>
+        <td>Rosja <span class="flag">🇷🇺</span></td>
+        <td>2009</td>
+        <td>38</td>
+      </tr>
+      <tr>
+        <td>Niemcy <span class="flag">🇩🇪</span></td>
+        <td>1854</td>
+        <td>48</td>
+      </tr>
+      <tr>
+        <td>Chiny <span class="flag">🇨🇳</span></td>
+        <td>804</td>
+        <td>24</td>
+      </tr>
+      <tr>
+        <td>Wielka Brytania <span class="flag">🇬🇧</span></td>
+        <td>1014</td>
+        <td>53</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+    <footer></footer>
+</body>
+</html>
