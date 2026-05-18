@@ -7,7 +7,6 @@ async function updateTable() {
         tableBody.innerHTML = ""; 
 
         data.data.forEach(country => {
-            // 1. Pobieramy ID kraju (np. POL, USA)
             const countryId = country.id.toUpperCase();
             
             const flagUrl = country.flag_url;
