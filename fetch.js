@@ -1,30 +1,26 @@
 async function updateTable() {
     try {
-        // Pobieramy dane tylko z jednego API
         const response = await fetch('https://apis.codante.io/olympic-games/countries');
         const data = await response.json();
         
         const tableBody = document.getElementById('table-body');
-        tableBody.innerHTML = ""; // Czyścimy tabelę
+        tableBody.innerHTML = ""; 
 
         data.data.forEach(country => {
-            // 1. Używamy ID jako nazwy (zmieniamy na wielkie litery dla pewności)
+            // 1. Pobieramy ID kraju (np. POL, USA)
             const countryId = country.id.toUpperCase();
             
-            // 2. Przygotowujemy kod do flagi (zazwyczaj małe litery w klasach CSS)
-            const flagCode = country.id.toLowerCase();
+            const flagUrl = country.flag_url;
 
-            // 3. Sumujemy wszystkie medale
-            const totalMedals = country.gold_medals + country.silver_medals + country.bronze_medals;
+            const totalMedals = country.total_medals;
 
-            // 4. Ranking jako "Liczba igrzysk"
             const ranking = country.rank;
 
             const row = `
                 <tr>
                     <td>
-                        ${countryId} 
-                        <span class="flag">${flagCode}</span>
+                        <img src="${flagUrl}" alt="${countryId}" style="width: 20px; margin-right: 8px; vertical-align: middle;">
+                        ${countryId}
                     </td>
                     <td>${totalMedals}</td>
                     <td>${ranking}</td>
@@ -34,7 +30,7 @@ async function updateTable() {
             tableBody.insertAdjacentHTML('beforeend', row);
         });
 
-        console.log("Tabela wygenerowana pomyślnie z ID i flagami!");
+        console.log("Tabela zaktualizowana o flagi z flag_url!");
 
     } catch (error) {
         console.error("Błąd podczas pobierania danych:", error);
