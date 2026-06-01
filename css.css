@@ -1,45 +1,73 @@
+body {
+    font-family: cursive;
+    background-color: rgb(255, 243, 243);
+    margin: 2px;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+main {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-collapse: separate; 
+    border-spacing: 2px;
+}
+
+td, th {
+    padding: 5px;
+    border: none;
+}
+
 td {
     padding: 5px;
-    background-color: white;
     margin: 2px;
+    background-color: white;
+    color: black;
+    text-align: center;
 }
 
 th {
     text-transform: uppercase;
     font-weight: bold;
     padding: 5px;
-    background-color: lightblue;
     margin: 2px;
+    background-color: lightblue;
+    color: black;
+    text-align: center;
 }
+
+#naglowek-medale {
+    cursor: pointer;
+    user-select: none;
+}
+
+#formularz-wyszukiwania {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#widok-szczegolow {
+    display: none; 
+    padding: 20px;
+    text-align: center;
+}
+
 .flag {
     font-family: "Noto Color Emoji", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
-table {
-    width: 100%;
-    max-width: 1400px;
-}
-body {
-    font-family: cursive;
-    background-color: rgb(255, 243, 243);
-}
 
-.darkmode {
-    background-color: black;
-    color: white;
-}
-.darkmode td {
-    padding: 5px;
-    background-color: rgb(131, 131, 131);
-    margin: 2px;
-}
-.darkmode th {
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 5px;
-    background-color: rgb(80, 80, 80);
-    margin: 2px;
+.flaga-tabela {
+    width: 20px;
+    margin-right: 8px; 
+    vertical-align: middle;
 }
 
 .flaga-szczegoly {
@@ -47,19 +75,42 @@ body {
     margin-bottom: 20px;
 }
 
-.flaga-tabela {
-    width: 20px;
-    margin-right: 8px; 
-    vertical-align: middle;
-}
-
 .przycisk-akcji {
     padding: 5px 10px;
     cursor: pointer;
 }
 
-.flaga-tabela {
-    width: 20px;
-    margin-right: 8px; 
-    vertical-align: middle;
+#darkmode {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.darkmode {
+    background-color: black;
+    color: white;
+}
+
+.darkmode td {
+    background-color: rgb(131, 131, 131);
+    color: white;
+}
+
+.darkmode th {
+    background-color: rgb(80, 80, 80);
+    color: white;
+}
+
+@media (max-width: 600px) {
+    th, td {
+        padding: 3px;
+        font-size: 14px;
+    }
+
+    .flaga-szczegoly {
+        width: 70px;
+    }
 }
