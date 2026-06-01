@@ -104,6 +104,12 @@ przyciskMedale.addEventListener("click", function() {
 // 5 DARKMODE
 const przycisk_darkmode = document.getElementById("darkmode");
 
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("darkmode");
+}
+
 przycisk_darkmode.addEventListener('click', () => {
-    document.getElementsByTagName("body")[0].classList.toggle("darkmode");
+    document.body.classList.toggle("darkmode");
+    const isDark = document.body.classList.contains("darkmode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
 });
