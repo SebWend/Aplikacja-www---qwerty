@@ -1,35 +1,16 @@
-
-body {
-    font-family: cursive;
-    background-color: rgb(255, 243, 243);
-    margin: 0;
-    padding: 20px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-main {
-    overflow-x: auto;
-    width: 100%;
-}
-
-th, td {
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
-
 td {
+    padding: 5px;
     background-color: white;
-    color: black;
+    margin: 2px;
 }
 
 th {
     text-transform: uppercase;
     font-weight: bold;
+    padding: 5px;
     background-color: lightblue;
-    color: black;
+    margin: 2px;
 }
-
 .flag {
     font-family: "Noto Color Emoji", sans-serif;
     font-weight: 400;
@@ -38,8 +19,10 @@ th {
 table {
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto;
-    border-collapse: collapse;
+}
+body {
+    font-family: cursive;
+    background-color: rgb(255, 243, 243);
 }
 
 .darkmode {
@@ -57,4 +40,26 @@ table {
     padding: 5px;
     background-color: rgb(80, 80, 80);
     margin: 2px;
+}
+
+.flaga-szczegoly {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.flaga-tabela {
+    width: 20px;
+    margin-right: 8px; 
+    vertical-align: middle;
+}
+
+.przycisk-akcji {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.flaga-tabela {
+    width: 20px;
+    margin-right: 8px; 
+    vertical-align: middle;
 }
