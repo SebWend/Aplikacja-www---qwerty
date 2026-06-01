@@ -5,6 +5,7 @@ function startstrony() {
     
     body.innerHTML = `
         <header>
+            <div id="med"></div>
             <div id="zglos">Zglos blad</div>
             <div id="darkmode">Dark mode</div>
             <h1>Witam</h1>
@@ -41,6 +42,7 @@ async function DaneApi() {
         
         wszystkieDane = daneJson.data;
         ZrobTabele(wszystkieDane);
+        licz_medale(wszystkieDane);
 
     } catch (blad) {
         console.error("Błąd API:", blad);

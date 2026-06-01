@@ -148,3 +148,13 @@ const przycisk_zglos=document.getElementById("zglos");
 przycisk_zglos.addEventListener('click', () => {
     Zglos_blad();
 });
+
+// 7 WSZYSTKIE MEDALE
+function licz_medale(daneTabela){
+    let medale=0;
+    wszystkieDane.forEach(kraj => {
+        medale=medale+kraj.total_medals;
+    });
+    div=document.getElementById("med");
+    div.textContent=`Wszystkie medale:  ${medale}`;
+}
