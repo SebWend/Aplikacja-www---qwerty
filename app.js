@@ -113,3 +113,38 @@ przycisk_darkmode.addEventListener('click', () => {
     const isDark = document.body.classList.contains("darkmode");
     localStorage.setItem("theme", isDark ? "dark" : "light");
 });
+
+// 6 ZGLASZANIE BLEDOW
+
+function Zglos_blad(){
+    const tabela = document.getElementById('tabela-danych');
+    const formularz = document.getElementById('formularz-wyszukiwania');
+    const widok = document.getElementById('widok-szczegolow');
+
+    tabela.style.display = 'none';
+    formularz.style.display = 'none';
+    widok.style.display = 'block';
+
+    widok.innerHTML = `
+        <input type="text" placeholder="zgloszenie" id="zgloszenie"> 
+        <button id="btn">ok</button> 
+        <h1 id="out"></h1>
+    `;
+    const output = document.getElementById("out");
+    const input = document.getElementById("zgloszenie");
+
+    document.getElementById("btn").onclick = function () {
+        output.textContent = "Dziekujemy za zgloszenie"
+        setTimeout(() => {
+            widok.style.display = 'none';
+            tabela.style.display = 'table';
+            formularz.style.display = 'block';
+        }, 1000);
+    }
+}
+
+const przycisk_zglos=document.getElementById("zglos");
+
+przycisk_zglos.addEventListener('click', () => {
+    Zglos_blad();
+});

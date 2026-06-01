@@ -5,6 +5,7 @@ function startstrony() {
     
     body.innerHTML = `
         <header>
+            <div id="zglos">Zglos blad</div>
             <div id="darkmode">Dark mode</div>
             <h1>Witam</h1>
         </header>
