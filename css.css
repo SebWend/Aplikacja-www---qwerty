@@ -1,9 +1,10 @@
 body {
     font-family: cursive;
     background-color: rgb(255, 243, 243);
-    margin: 2px;
-    padding: 20px;
+    margin: 0;
+    padding: 10px;
     transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
 }
 
 main {
@@ -13,71 +14,27 @@ main {
 
 table {
     width: 100%;
-    max-width: 1400px;
     margin: 0 auto;
     border-collapse: separate; 
-    border-spacing: 2px;
+    border-spacing: 1px;
 }
 
 td, th {
-    padding: 5px;
+    padding: 4px;
+    text-align: center;
     border: none;
 }
 
 td {
-    padding: 5px;
-    margin: 2px;
     background-color: white;
     color: black;
-    text-align: center;
 }
 
 th {
     text-transform: uppercase;
     font-weight: bold;
-    padding: 5px;
-    margin: 2px;
     background-color: lightblue;
     color: black;
-    text-align: center;
-}
-
-#naglowek-medale {
-    cursor: pointer;
-    user-select: none;
-}
-
-#formularz-wyszukiwania {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#widok-szczegolow {
-    display: none; 
-    padding: 20px;
-    text-align: center;
-}
-
-.flag {
-    font-family: "Noto Color Emoji", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.flaga-tabela {
-    width: 20px;
-    margin-right: 8px; 
-    vertical-align: middle;
-}
-
-.flaga-szczegoly {
-    width: 100px;
-    margin-bottom: 20px;
-}
-
-.przycisk-akcji {
-    padding: 5px 10px;
-    cursor: pointer;
 }
 
 #darkmode {
@@ -89,28 +46,66 @@ th {
     border-radius: 4px;
 }
 
+#formularz-wyszukiwania {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#naglowek-medale {
+    cursor: pointer;
+    user-select: none;
+}
+
+#widok-szczegolow {
+    display: none; 
+    padding: 15px;
+    text-align: center;
+}
+
+.flaga-tabela {
+    width: 18px; 
+    margin-right: 5px; 
+    vertical-align: middle;
+}
+
+.flaga-szczegoly {
+    width: 70px;
+    margin-bottom: 15px;
+}
+
+.przycisk-akcji {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
 .darkmode {
     background-color: black;
     color: white;
 }
+.darkmode td { background-color: rgb(131, 131, 131); color: white; }
+.darkmode th { background-color: rgb(80, 80, 80); color: white; }
 
-.darkmode td {
-    background-color: rgb(131, 131, 131);
-    color: white;
-}
+@media (min-width: 768px) {
+    body {
+        padding: 40px;
+        font-size: 16px;
+    }
 
-.darkmode th {
-    background-color: rgb(80, 80, 80);
-    color: white;
-}
+    table {
+        max-width: 1400px;
+        border-spacing: 3px;
+    }
 
-@media (max-width: 600px) {
-    th, td {
-        padding: 3px;
-        font-size: 14px;
+    td, th {
+        padding: 8px;
+    }
+
+    .flaga-tabela {
+        width: 22px;
+        margin-right: 8px;
     }
 
     .flaga-szczegoly {
-        width: 70px;
+        width: 120px;
     }
 }
