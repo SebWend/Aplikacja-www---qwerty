@@ -110,6 +110,22 @@ th {
     }
 }
 
+/* EKRANY 4K
+@media (min-width: 2560px) {
+    body {
+        font-size: 24px; 
+    }
+
+    table {
+        max-width: 1800px; 
+    }
+
+    .flaga-szczegoly {
+        width: 200px; 
+    }
+}
+*/
+
 #zglos {
     cursor: pointer;
     display: inline-block;
