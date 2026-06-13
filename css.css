@@ -28,7 +28,7 @@ td, th {
 td { background-color: white; color: black; }
 th { text-transform: uppercase; font-weight: bold; background-color: lightblue; color: black; }
 
-#darkmode, #zglos {
+#darkmode, #zglos, #btn, #powrot{
     cursor: pointer;
     display: inline-block;
     padding: 5px 10px;

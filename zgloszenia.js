@@ -8,14 +8,21 @@ function Zglos_blad(){
     widok.style.display = 'block';
 
     widok.innerHTML = `
+        <h2>Menu zgłaszania błędu</h2>
         <input type="text" placeholder="imie" id="imie"><br>
         <input type="text" placeholder="nazwisko" id="nazwisko"><br>
         <input type="email" placeholder="email" id="email"><br>
         <textarea id="zgloszenie" placeholder="zgloszenie" rows="20" cols="35"></textarea><br>
-        <button id="btn">ok</button> 
+        <button id="btn">Wyślij zgłoszenie</button><br>
+        <button id="powrot">Powrót</button>
         <h1 id="out"></h1>
     `;
     let output = document.getElementById("out");
+    document.getElementById("powrot").onclick = function () {
+        widok.style.display = 'none';
+        tabela.style.display = 'table';
+        formularz.style.display = 'block';
+    }
     document.getElementById("btn").onclick = function () {
         let input = document.getElementById("zgloszenie").value;
         let imie = document.getElementById("imie").value;
