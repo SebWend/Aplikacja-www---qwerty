@@ -126,21 +126,18 @@ function Zglos_blad(){
     widok.style.display = 'block';
 
     widok.innerHTML = `
-        <input type="text" placeholder="zgloszenie" id="zgloszenie"> 
-        <button id="btn">ok</button> 
-        <h1 id="out"></h1>
+        <form method="post">
+            <input type="text" placeholder="imie" id="imie" required="true"><br>
+            <input type="text" placeholder="nazwisko" id="nazwisko" required="true"><br>
+            <input type="email" placeholder="email" id="email" required="true"><br>
+            <textarea id="zgloszenie" placeholder="zgloszenie" name="zgloszenie" rows="5" cols="21" required="true"></textarea><br>
+            <input type="submit" value="ok"></input>
+        </form>
     `;
-    const output = document.getElementById("out");
     const input = document.getElementById("zgloszenie");
-
-    document.getElementById("btn").onclick = function () {
-        output.textContent = "Dziekujemy za zgloszenie"
-        setTimeout(() => {
-            widok.style.display = 'none';
-            tabela.style.display = 'table';
-            formularz.style.display = 'block';
-        }, 1000);
-    }
+    const imie = document.getElementById("imie");
+    const nazwisko = document.getElementById("nazwisko");
+    const email = document.getElementById("email");
 }
 
 const przycisk_zglos=document.getElementById("zglos");
