@@ -1,157 +1,63 @@
-// 1 TABELE
-function ZrobTabele(daneTabela) {
-    const tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = ""; 
+let wszystkieDane = []; 
 
-    daneTabela.forEach(kraj => {
-        const wiersz = document.createElement('tr');
-        wiersz.style.cursor = "pointer"; 
-        
-        wiersz.innerHTML = `
-            <td>
-                <img src="${kraj.flag_url}" class="flaga-tabela">
-                ${kraj.id.toUpperCase()}
-            </td>
-            <td>${kraj.total_medals}</td>
-            <td>${kraj.rank}</td>
-        `;
-        
-        wiersz.addEventListener('click', () => pokazSzczegoly(kraj));
-        tableBody.appendChild(wiersz);
-    });
-}
+function startstrony() {
+    document.body.innerHTML = `
+        <header>
+            <div id="med" style="margin-bottom: 10px; font-weight: bold;"></div>
+            <button id="zglos" class="przycisk-akcji" style="margin-bottom: 10px;">Zgłoś błąd</button>
+            <button id="darkmode" class="przycisk-akcji" style="margin-bottom: 10px;">Dark mode</button>
+            <h1>Klasyfikacja medalowa Letnich Igrzysk Olimpijskich 2024</h1>
+        </header>
 
-// 2 DOKLADNE MEDALE PO KRAJU
-function pokazSzczegoly(kraj) {
-    const tabela = document.getElementById('tabela-danych');
-    const formularz = document.getElementById('formularz-wyszukiwania');
-    const widok = document.getElementById('widok-szczegolow');
+        <main>
+            <form id="formularz-wyszukiwania" style="margin-bottom: 20px;">
+                <label for="kraj">Kraj: </label>
+                <input type="text" id="kraj" placeholder="np. POL" style="padding: 5px;">
+                <input type="submit" value="Szukaj" class="przycisk-akcji" style="padding: 5px 15px;">
+            </form>
 
-    tabela.style.display = 'none';
-    formularz.style.display = 'none';
-    widok.style.display = 'block';
+            <table id="tabela-danych">
+                <thead>
+                    <tr>
+                        <th>Kraj</th>
+                        <th id="naglowek-medale" style="cursor: pointer; user-select: none;">Medale <span id="strzalka">⬇️</span></th>
+                        <th>Ranking</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
 
-    widok.innerHTML = `
-        <h2>${kraj.id.toUpperCase()}</h2>
-        <img src="${kraj.flag_url}" class="flaga-szczegoly">
-        <p>🥇 Złoto: ${kraj.gold_medals} | 🥈 Srebro: ${kraj.silver_medals} | 🥉 Brąz: ${kraj.bronze_medals}</p>
-        <p><strong>Suma medali: ${kraj.total_medals}</strong></p>
-        <button id="przycisk-powrot" class="przycisk-akcji">Powrót</button>
+            <div id="widok-szczegolow" style="display: none;"></div>
+        </main>
     `;
-
-    document.getElementById('przycisk-powrot').addEventListener('click', () => {
-        widok.style.display = 'none';
-        tabela.style.display = 'table';
-        formularz.style.display = 'block';
-    });
 }
 
-// 3 WYSZUKIWANIE 
-const formularz = document.getElementById("formularz-wyszukiwania");
-
-if (formularz) {
-    formularz.addEventListener("submit", (event) => {
-        event.preventDefault(); 
-        
-        const wpisanyKraj = document.getElementById("kraj").value.trim().toLowerCase();
-        
-        if (wpisanyKraj === "") {
-            alert("Musisz wpisać nazwę kraju!");
-            return ZrobTabele(wszystkieDane); 
-        }
-
-        const przefiltrowane = wszystkieDane.filter(kraj => 
-            kraj.id.toLowerCase().includes(wpisanyKraj)
-        );
-        
-        ZrobTabele(przefiltrowane);
-    });
+function licz_medale(daneTabela) {
+    let medale = daneTabela.reduce((suma, kraj) => suma + kraj.total_medals, 0);
+    const div = document.getElementById("med");
+    if(div) div.textContent = `Wszystkie medale zdobyte podczas igrzysk: ${medale}`;
 }
 
-// 4 SORTOWANIE
-const przyciskMedale = document.getElementById("naglowek-medale");
-const ikonkaStrzalki = document.getElementById("strzalka");
-const Tabela = document.getElementById("table-body"); 
+async function DaneApi() {
+    try {
+        const odpowiedz = await fetch('https://apis.codante.io/olympic-games/countries');
+        const daneJson = await odpowiedz.json();
+        
+        wszystkieDane = daneJson.data;
+        ZrobTabele(wszystkieDane);
+        licz_medale(wszystkieDane);
 
-let czySortowacMalejaco = true;
-
-przyciskMedale.addEventListener("click", function() {
-    
-    const listaWierszy = Array.from(Tabela.querySelectorAll("tr"));
-
-    listaWierszy.sort(function(wierszA, wierszB) {
-        const medaleA = parseInt(wierszA.querySelectorAll("td")[1].innerText);
-        const medaleB = parseInt(wierszB.querySelectorAll("td")[1].innerText);
-
-        if (czySortowacMalejaco) {
-            return medaleB - medaleA; 
-        } else {
-            return medaleA - medaleB; 
-        }
-    });
-
-    listaWierszy.forEach(wiersz => Tabela.appendChild(wiersz));
-
-    if (czySortowacMalejaco) {
-        ikonkaStrzalki.innerText = "⬇️";         
-        czySortowacMalejaco = false;             
-    } else {
-        ikonkaStrzalki.innerText = "⬆️";          
-        czySortowacMalejaco = true;              
+    } catch (blad) {
+        console.error("Błąd API:", blad);
+        const tBody = document.getElementById('table-body');
+        if(tBody) tBody.innerHTML = '<tr><td colspan="3">Błąd pobierania danych z API.</td></tr>';
     }
-});
-
-// 5 DARKMODE
-const przycisk_darkmode = document.getElementById("darkmode");
-
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("darkmode");
 }
 
-przycisk_darkmode.addEventListener('click', () => {
-    document.body.classList.toggle("darkmode");
-    const isDark = document.body.classList.contains("darkmode");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-});
-
-// 6 ZGLASZANIE BLEDOW
-
-function Zglos_blad(){
-    const tabela = document.getElementById('tabela-danych');
-    const formularz = document.getElementById('formularz-wyszukiwania');
-    const widok = document.getElementById('widok-szczegolow');
-
-    tabela.style.display = 'none';
-    formularz.style.display = 'none';
-    widok.style.display = 'block';
-
-    widok.innerHTML = `
-        <form method="post">
-            <input type="text" placeholder="imie" id="imie" required="true"><br>
-            <input type="text" placeholder="nazwisko" id="nazwisko" required="true"><br>
-            <input type="email" placeholder="email" id="email" required="true"><br>
-            <textarea id="zgloszenie" placeholder="zgloszenie" name="zgloszenie" rows="5" cols="21" required="true"></textarea><br>
-            <input type="submit" value="ok"></input>
-        </form>
-    `;
-    const input = document.getElementById("zgloszenie");
-    const imie = document.getElementById("imie");
-    const nazwisko = document.getElementById("nazwisko");
-    const email = document.getElementById("email");
-}
-
-const przycisk_zglos=document.getElementById("zglos");
-
-przycisk_zglos.addEventListener('click', () => {
-    Zglos_blad();
-});
-
-// 7 WSZYSTKIE MEDALE
-function licz_medale(daneTabela){
-    let medale=0;
-    wszystkieDane.forEach(kraj => {
-        medale=medale+kraj.total_medals;
-    });
-    div=document.getElementById("med");
-    div.textContent=`Wszystkie medale:  ${medale}`;
-}
+startstrony();        
+Wyszukiwanie();
+Sortowanie();
+RozpocznijZgloszenie();
+WlaczDarkmode();
+DaneApi();            

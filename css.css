@@ -25,19 +25,10 @@ td, th {
     border: none;
 }
 
-td {
-    background-color: white;
-    color: black;
-}
+td { background-color: white; color: black; }
+th { text-transform: uppercase; font-weight: bold; background-color: lightblue; color: black; }
 
-th {
-    text-transform: uppercase;
-    font-weight: bold;
-    background-color: lightblue;
-    color: black;
-}
-
-#darkmode {
+#darkmode, #zglos {
     cursor: pointer;
     display: inline-block;
     padding: 5px 10px;
@@ -62,26 +53,9 @@ th {
     text-align: center;
 }
 
-.flaga-tabela {
-    width: 18px; 
-    margin-right: 5px; 
-    vertical-align: middle;
-}
+.flaga-tabela { width: 18px; margin-right: 5px; vertical-align: middle; }
 
-.flaga-szczegoly {
-    width: 70px;
-    margin-bottom: 15px;
-}
-
-.przycisk-akcji {
-    padding: 8px 15px;
-    cursor: pointer;
-}
-
-.darkmode {
-    background-color: black;
-    color: white;
-}
+.darkmode { background-color: black; color: white; }
 .darkmode td { background-color: rgb(131, 131, 131); color: white; }
 .darkmode th { background-color: rgb(80, 80, 80); color: white; }
 
@@ -126,11 +100,24 @@ th {
 }
 */
 
-#zglos {
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.karta-szczegolow {
+    background: white; border: 1px solid #ccc; border-radius: 8px;
+    padding: 20px; max-width: 400px; margin: 20px auto;
+    text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.1); color: black;
 }
+.wiersz-medali { display: flex; justify-content: space-between; font-size: 14px; margin: 10px 0 3px; }
+
+.pasek-postepu-tlo { background: #eee; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 10px; }
+.pasek-postepu-wypelnienie { height: 100%; }
+.pasek-zloto { background: #ffd700; }
+.pasek-srebro { background: #c0c0c0; }
+.pasek-braz { background: #cd7f32; }
+
+.przycisk-akcji {
+    background: #eee; border: 1px solid #ccc; border-radius: 5px;
+    padding: 10px 15px; cursor: pointer; font-weight: bold; color: black;
+}
+
+.darkmode .karta-szczegolow { background: #505050; border-color: #444; color: white; }
+.darkmode .przycisk-akcji { background: #838383; border-color: #222; color: white; }
+.darkmode .pasek-postepu-tlo { background: #444; }
