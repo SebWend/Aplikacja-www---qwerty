@@ -28,7 +28,7 @@ Aplikacja została wykonana w czystej technologii JavaScript (ES6+), HTML5 oraz 
   <p align="center">
   <img src="img/szczegoly.png" alt="Karta szczegółowa kraju" width="450">
   </p>
-  ii. Formularz: Widok dynamicznego formularza zgłaszania błędów.
+  iii. Formularz: Widok dynamicznego formularza zgłaszania błędów.
   <p align="center">
   <img src="img/formularz.png" alt="Formularz błędu" width="450">
   </p>
