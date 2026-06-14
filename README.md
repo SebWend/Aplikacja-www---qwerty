@@ -24,11 +24,11 @@ Aplikacja została wykonana w czystej technologii JavaScript (ES6+), HTML5 oraz 
   <p align="center">
   <img src="img/widok_glowny.png" alt="Widok główny" width="450">
   </p>
-  2. Szczegóły elementu: Karta szczegółowa konkretnego kraju (wywoływana kliknięciem w wiersz tabeli).
+  ii. Szczegóły elementu: Karta szczegółowa konkretnego kraju (wywoływana kliknięciem w wiersz tabeli).
   <p align="center">
   <img src="img/szczegoly.png" alt="Karta szczegółowa kraju" width="450">
   </p>
-  3. Formularz: Widok dynamicznego formularza zgłaszania błędów.
+  ii. Formularz: Widok dynamicznego formularza zgłaszania błędów.
   <p align="center">
   <img src="img/formularz.png" alt="Formularz błędu" width="450">
   </p>
